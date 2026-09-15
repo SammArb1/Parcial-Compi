@@ -4,6 +4,7 @@ public class GraphTests {
 
     public static void main(String[] args) {
         System.out.println("=== INICIANDO PRUEBAS DEL PARCIAL ===\n");
+        testMission1();
         testMission2();
         testMission3();
         testMission4();
@@ -18,6 +19,19 @@ public class GraphTests {
             System.out.println("   Esperado: " + expected);
             System.out.println("   Obtenido: " + result);
         }
+    }
+
+    public static void testMission1() {
+        System.out.println("--- Misión 1: BFS & DFS ---");
+        
+        String input1 = "10 10\n9\n0 1 2\n1 1 2\n2 2 2 9\n3 2 1 7\n5 3 3 6 9\n" +
+                "6 4 0 1 2 7\n7 3 0 3 8\n8 2 7 9\n9 3 2 3 4\n0 0\n9 9\n0 0";
+        assertTest("Case #1: BFS 18 DFS 32", NinaRescueService.execute(input1), "Ejemplo del enunciado");
+
+        assertTest("Case #1: BFS 0 DFS 0", NinaRescueService.execute("3 3\n0\n1 1 1 1\n0 0"), "Inicio == destino");
+        assertTest("Case #1: Nina is unreachable", NinaRescueService.execute("2 2\n1\n0 1 0\n0 0 1 1\n0 0"), "Mina en inicio");
+        assertTest("Case #1: Nina is unreachable", NinaRescueService.execute("1 3\n1\n0 1 1\n0 0 0 2\n0 0"), "Pasillo bloqueado");
+        assertTest("Case #1: BFS 3 DFS 3", NinaRescueService.execute("1 4\n0\n0 0 0 3\n0 0"), "Pasillo vacío");
     }
 
     public static void testMission2() {
